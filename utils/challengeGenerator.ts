@@ -43,10 +43,14 @@ export const generateDailyChallengeQuestions = async (
     const isJuniorClass = ['6','7','8','9','10'].includes(classLevel);
 
     if (isJuniorClass) {
-        // Force Math, Science, Social Science
+        // Force Math, Science, Social Science (and constituents)
         targetSubjects.add('Math');
         targetSubjects.add('Science');
         targetSubjects.add('Social Science');
+        targetSubjects.add('History');
+        targetSubjects.add('Geography');
+        targetSubjects.add('Political Science');
+        targetSubjects.add('Economics');
     } else {
         // For 11/12, use Stream subjects
         const subjects = getSubjectsList(classLevel, stream, board);
@@ -105,8 +109,8 @@ export const generateDailyChallengeQuestions = async (
             
             // Normalize Subject Names
             if (subjectName.includes('Math')) subjectName = 'Math';
-            else if (subjectName.includes('Science') && !subjectName.includes('Social')) subjectName = 'Science';
-            else if (subjectName.includes('Social')) subjectName = 'Social Science';
+            else if (subjectName.includes('Science') && !subjectName.includes('Social') && !subjectName.includes('Political')) subjectName = 'Science';
+            else if (subjectName.includes('Social') || subjectName.includes('History') || subjectName.includes('Geography') || subjectName.includes('Political') || subjectName.includes('Economics')) subjectName = 'Social Science';
 
             if (!questionsBySubject[subjectName]) {
                 questionsBySubject[subjectName] = [];
