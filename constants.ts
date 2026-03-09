@@ -141,7 +141,10 @@ export const getSubjectsList = (classLevel: string, stream: string | null, board
       selectedSubjects = [
           pool.math,
           pool.science,
-          pool.sst,
+          pool.history,
+          pool.geography,
+          pool.polity,
+          pool.economics,
           pool.english,
           pool.hindi,
           pool.sanskrit,
